@@ -8,4 +8,13 @@
  	<servlet-name>abc</servlet-name>
  	<url-pattern>/add</url-pattern>
  </servlet-mapping>
+ 
+  <servlet>
+ 	<servlet-name>square</servlet-name>
+ 	<servlet-class>com.nikh.SqrtServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>square</servlet-name>
+ 	<url-pattern>/sqr</url-pattern>
+ </servlet-mapping>
 </web-app>
