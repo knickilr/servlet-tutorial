@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AddServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -15,13 +16,22 @@ public class AddServlet extends HttpServlet{
 		int j = Integer.parseInt(req.getParameter("num2"));
 		
 		int k=i+j;
-		System.out.println("sum of two is "+ k);
-		req.setAttribute("k", k);
-		
+		System.out.println("sum of two is "+ k); 
+
+		//Sending the response to client
 //		PrintWriter out = res.getWriter();
 //		out.println("Sum of two is "+ k);
-				
-		RequestDispatcher rd = req.getRequestDispatcher("sqr");
-		rd.forward(req, res);
+		
+//		Using RequestDispatcher to forward the request to another servlet
+//		req.setAttribute("k", k);
+//		RequestDispatcher rd = req.getRequestDispatcher("sqr");
+//		rd.forward(req, res);
+		
+		//Using Redirect to send the response to client stating to redirect to another page
+//		res.sendRedirect("sqr?k="+k); //url rewriting
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("k", k);
+		res.sendRedirect("sqr");
 	}
 }
